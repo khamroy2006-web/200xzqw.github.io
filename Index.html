@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบ กว. Electrical Machines</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; line-height: 1.6; max-width: 800px; }
+        .question-box { background-color: #f9f9f9; margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        label { display: block; margin-bottom: 8px; cursor: pointer; }
+        button { padding: 12px 24px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        #result { margin-top: 20px; font-size: 20px; font-weight: bold; color: #d9534f; }
+    </style>
+</head>
+<body>
+
+    <h1>แบบทดสอบเตรียมสอบ กว.</h1>
+    <h2>วิชา Electrical Machines (35: Magnetic circuits)</h2>
+
+    <div class="question-box">
+        <p><b>ข้อที่ 1 : กระแสไฟฟ้าในวงจรไฟฟ้า เทียบได้กับพารามิเตอร์ใดในวงจรแม่เหล็ก</b></p>
+        <label><input type="radio" name="q1" value="correct"> 1 : เส้นแรงแม่เหล็ก (magnetic flux)</label>
+        <label><input type="radio" name="q1" value="wrong"> 2 : ความเข้มเส้นแรงแม่เหล็ก (magnetic flux intensity)</label>
+        <label><input type="radio" name="q1" value="wrong"> 3 : ความซึมซาบแม่เหล็ก (permeability)</label>
+        <label><input type="radio" name="q1" value="wrong"> 4 : แรงเคลื่อนแม่เหล็ก (magnetomotive force)</label>
+    </div>
+
+    <div class="question-box">
+        <p><b>ข้อที่ 2 : อุปกรณ์ในข้อใด ที่ทำงานโดยไม่ได้ใช้หลักการของสนามแม่เหล็ก</b></p>
+        <label><input type="radio" name="q2" value="correct"> 1 : สวิตช์ปุ่มกด (Push button switch)</label>
+        <label><input type="radio" name="q2" value="wrong"> 2 : แมกเนติกคอนแทกเดอร์ (Magnetic contactor)</label>
+        <label><input type="radio" name="q2" value="wrong"> 3 : โซลีนอยด์ (Solenoid)</label>
+        <label><input type="radio" name="q2" value="wrong"> 4 : ไดนาโม (Dynamo)</label>
+    </div>
+
+    <div class="question-box">
+        <p><b>ข้อที่ 3 : วงจรแม่เหล็กวงจรหนึ่งมีความยาวเฉลี่ยแกนเหล็ก 1.8 m พื้นที่หน้าตัดแกนเหล็ก 0.015 sq.m มีขดลวดจํานวน 200 turns พันรอบแกนเหล็ก เมื่อจ่ายกระแสไฟฟ้า 2 A เข้าไปในขดลวด มีค่าความซึมซาบแม่เหล็กสัมพัทธ์ (relative permeability) เท่ากับ 2500 จงหาค่าเส้นแรงแม่เหล็ก (magnetic flux) ของวงจรแม่เหล็กนี้</b></p>
+        <label><input type="radio" name="q3" value="wrong"> 1 : 9.95 mWb</label>
+        <label><input type="radio" name="q3" value="wrong"> 2 : 6.84 mWb</label>
+        <label><input type="radio" name="q3" value="wrong"> 3 : 8.24 mWb</label>
+        <label><input type="radio" name="q3" value="correct"> 4 : 10.46 mWb</label>
+    </div>
+
+    <button onclick="checkAnswers()">ส่งคำตอบเพื่อดูคะแนน</button>
+    <div id="result"></div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            let totalQuestions = 3; // หากเพิ่มข้อสอบ ต้องมาแก้ตัวเลขตรงนี้ด้วยครับ
+
+            for(let i = 1; i <= totalQuestions; i++) {
+                // เช็คว่าในแต่ละข้อ (q1, q2, q3) มีการเลือกข้อที่มี value="correct" หรือไม่
+                let selected = document.querySelector('input[name="q' + i + '"]:checked');
+                if (selected && selected.value === "correct") {
+                    score++;
+                }
+            }
+            document.getElementById("result").innerText = "คุณได้คะแนน " + score + " / " + totalQuestions + " คะแนน";
+        }
+    </script>
+
+</body>
+</html>
